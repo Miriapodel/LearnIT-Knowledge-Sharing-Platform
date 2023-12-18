@@ -1,0 +1,20 @@
+﻿@model LearnIt.Models.Category
+
+<h1>Adauga o categorie</h1>
+<br />
+
+<div class="card shadow p-3 mb-5 bg-white rounded">
+    <div class="card-body p-3">
+@using(Html.BeginForm(actionName:"New", controllerName:"Categories", method: FormMethod.Post))
+{
+    @Html.Label("Name", "Numele categoriei")
+    <br />
+    @Html.TextBox("Name", null, new {@class = "form-control w-25"})
+    @Html.ValidationMessageFor(c => c.Name, null )
+
+    <br />
+
+    <button type="submit" class="btn btn-success">Adauga categoria</button>
+}
+    </div>
+</div>

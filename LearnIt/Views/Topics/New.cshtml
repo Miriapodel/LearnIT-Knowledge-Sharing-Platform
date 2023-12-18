@@ -1,0 +1,28 @@
+﻿@model LearnIt.Models.Topic
+
+<h1>Adaugare Topic Nou</h1>
+<br />
+
+<div class="card p-3 card shadow p-3 mb-5 bg-white rounded" style="width: 30rem">
+@using(Html.BeginForm(actionName:"New", controllerName:"Topics", method: FormMethod.Post))
+{
+    @Html.Label("Title", "Adauga un titlu")
+    <br />
+    @Html.TextBox("Title", "", new { @class = "form-control", @style = "width: 25rem" })
+    <br /><br />
+        @Html.ValidationMessageFor(t => t.Title, null)
+
+    @Html.Label("Description", "Adauga o descriere")
+    <br />
+    @Html.TextArea("Description", "", new { @class = "form-control summernote", @style="width: 25rem" })
+    <br /><br />
+
+    <label>Selectati o categorie pentru topic:</label>
+    <br />
+    @Html.DropDownListFor(categorie => categorie.CategoryId, new SelectList(Model.Categ, "Value", "Text"),
+    "Selectati Categoria", new{@class="form-control", @style="width: 25rem"})
+    <br /><br />
+
+    <button type="submit" class="btn btn-success">Adauga Topic-ul</button>
+}
+</div>

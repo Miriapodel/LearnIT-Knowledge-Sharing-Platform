@@ -1,0 +1,36 @@
+﻿@model LearnIt.Models.Topic
+
+<div class="card shadow p-3 mb-5 bg-white rounded">
+    <div class="card-body p-3">
+
+@using(Html.BeginForm(actionName:"Edit", controllerName:"Topics", method:FormMethod.Post, routeValues: new{id = Model.Id}))
+{
+    @Html.Label("Title", "Titlul topic-ului")
+    <br />
+    @Html.TextBox("Title", Model.Title, new { @class = "input-form" })
+    <br />
+    <br />
+
+    @Html.Label("Description", "Descrierea topic-ului")
+    <br />
+    @Html.TextArea("Description", Model.Description, new { @class = "input-form summernote" })
+    <br />
+    <br />
+
+    <label>Selectati categoria</label>
+    <br />
+    @Html.DropDownListFor(topic => topic.CategoryId, 
+        new SelectList(Model.Categ, "Value", "Text"),
+        "Alegeti Categoria", 
+        new{@class = "input-form"}
+    )
+
+    <br />
+    <br />
+
+    <button class="btn btn-success" type="submit">Editeaza Articolul</button>
+
+}
+
+</div>
+</div>

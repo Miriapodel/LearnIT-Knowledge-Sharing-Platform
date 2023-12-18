@@ -1,0 +1,23 @@
+﻿@model LearnIt.Models.Category
+
+<h1>Editeaza categoria</h1>
+<br />
+
+<div class="card shadow p-3 mb-5 bg-white rounded">
+    <div class="card-body p-3">
+@using(Html.BeginForm(controllerName:"Categories", actionName:"Edit", method: FormMethod.Post, routeValues: new{id = Model.Id}))
+{
+    @Html.Label("Name", "Numele categoriei")
+    <br />
+    @Html.TextBox("Name", Model.Name, new { @class = "form-control w-25" })
+    <br />
+
+    <button type="submit" class="btn btn-info">Editeaza Categoria</button>
+}
+
+<br />
+
+    </div>
+</div>                  
+
+<a href="/Categories/Index" class="btn btn-outline-primary">Inapoit la toate categoriile</a>
