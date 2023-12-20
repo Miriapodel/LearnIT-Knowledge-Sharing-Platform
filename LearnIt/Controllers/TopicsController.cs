@@ -31,22 +31,33 @@ namespace LearnIt.Controllers
 
             var topics = db.Topics.Include("Category");
 
-            int totalItems = topics.Count();
-
-            var currentPage = Convert.ToInt32(HttpContext.Request.Query["page"]);
-
-            var offset = 0;
-
-            if(!currentPage.Equals(0))
+            if(topics.Count() > 0)
             {
-                offset = (currentPage - 1) * _perPage;
+                int totalItems = topics.Count();
+
+                var currentPage = Convert.ToInt32(HttpContext.Request.Query["page"]);
+
+                var offset = 0;
+
+                if (!currentPage.Equals(0))
+                {
+                    offset = (currentPage - 1) * _perPage;
+                }
+
+                var paginatedTopics = topics.Skip(offset).Take(_perPage);
+
+                ViewBag.lastPage = Math.Ceiling((float)totalItems / (float)_perPage);
+
+                ViewBag.Topics = paginatedTopics;
+
+                ViewBag.exTopics = true;
+            }
+            else
+            {
+                ViewBag.exTopics = false;
             }
 
-            var paginatedTopics = topics.Skip(offset).Take(_perPage);
-
-            ViewBag.lastPage = Math.Ceiling((float)totalItems / (float)_perPage);
-
-            ViewBag.Topics = paginatedTopics;
+            
 
             SetAccessRights();
 
@@ -77,7 +88,7 @@ namespace LearnIt.Controllers
                 db.Topics.Add(topic);
                 db.SaveChanges();
                 TempData["Message"] = "Ati creat topicul cu succes";
-                return RedirectToAction("Index");
+                return Redirect("/Topics/TopicsDinCategorie/" + topic.CategoryId);
             }
             else
             {
@@ -136,7 +147,7 @@ namespace LearnIt.Controllers
         public IActionResult Delete(int id)
         {
             Topic topic = db.Topics.Include("Comments").Where(c => c.Id == id).First();
-            if (topic.AuthorId == _userManager.GetUserId(User))
+            if (topic.AuthorId == _userManager.GetUserId(User) || User.IsInRole("Admin"))
             {
                 foreach (var comment in topic.Comments)
                 {
@@ -222,6 +233,49 @@ namespace LearnIt.Controllers
             }
 
             return selectList;
+        }
+
+        public IActionResult TopicsDinCategorie(int id)
+        {
+            var topics = db.Topics.Include("Category").Where(t => t.CategoryId == id);
+
+            SetAccessRights();
+
+            if(topics.Count() != 0)
+            {
+                ViewBag.idCatVechi = id;
+
+                ViewBag.NumeCategorie = topics.ToArray().First().Category.Name;
+
+                int _perPage = 3;
+
+                int totalItems = topics.Count();
+
+                var currentPage = Convert.ToInt32(HttpContext.Request.Query["page"]);
+
+                var offset = 0;
+
+                if (!currentPage.Equals(0))
+                {
+                    offset = (currentPage - 1) * _perPage;
+                }
+
+                var paginatedTopics = topics.Skip(offset).Take(_perPage);
+
+                ViewBag.lastPage = Math.Ceiling((float)totalItems / (float)_perPage);
+
+                ViewBag.exTopics = true;
+
+                ViewBag.Topics = paginatedTopics;
+            }
+            else
+            {
+                ViewBag.exTopics = false;
+            }
+
+            
+
+            return View();
         }
 
         private void SetAccessRights()

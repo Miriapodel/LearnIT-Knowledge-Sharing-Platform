@@ -2,36 +2,63 @@
 {
     <div class="tempdata">@TempData["Message"]</div>
 }
-<h1>Categorii</h1>
-<br />
 
-
-@foreach(var category in ViewBag.Categories)
+@if (ViewBag.Categories == null)
 {
-    <div class="row">
-        <div class="col-sm-6">
-            <div class="card card shadow p-3 mb-5 bg-white rounded">
-                <div class="card-body">
-                    <h5 class="card-title">@category.Name</h5>
-                    <a href="/Categories/Show/@category.Id" class="btn btn-primary">Afiseaza Categoria</a>
+    <h1>Momentan nu exista nicio categorie</h1>
+    <br />
+    <br>
+
+    @if (ViewBag.EsteAdmin == true)
+    {
+        <a href="/Categories/New" class="btn btn-outline-primary">Adauga o categorie</a>
+
+        <a href="/Topics/Index" class="btn btn-outline-primary">Mergi la toate topic-urile</a>
+    }
+}
+else
+{
+    <h1>Categorii</h1>
+    <br />
+
+
+
+    @foreach (var category in ViewBag.Categories)
+    {
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="card card shadow p-3 mb-5 bg-white rounded">
+                    <div class="card-body">
+                        <h5 class="card-title">@category.Name</h5>
+                        <br />
+                        @if (ViewBag.EsteAdmin == true)
+                        {
+                            <a href="/Categories/Show/@category.Id" class="btn btn-primary">Afiseaza Categoria</a>
+                        }
+                        <a href="/Topics/TopicsDinCategorie/@category.Id" class="btn btn-primary">Topic-uri asociate</a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+
+        <br />
+        <br />
+    }
 
     <br />
-    <br />
+
+
+    @if (ViewBag.EsteAdmin == true)
+    {
+        <a href="/Categories/New" class="btn btn-outline-primary">Adauga o categorie</a>
+
+        <a href="/Topics/Index" class="btn btn-outline-primary">Mergi la toate topic-urile</a>
+    }
 }
 
-<br />
 
 
-@if (ViewBag.EsteAdmin == true)
-{
-    <a href="/Categories/New" class="btn btn-outline-primary">Adauga o categorie</a>
-}
 
-<a href="/Topics/Index" class="btn btn-outline-primary">Mergi la topic-uri</a>
 
 
 

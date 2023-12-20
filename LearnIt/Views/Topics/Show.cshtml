@@ -74,8 +74,14 @@
             @if (ViewBag.UserCurent == comentariu.AuthorId || ViewBag.EsteAdmin == true)
             {
                 <a href="/Comments/Delete/@comentariu.Id" class="btn btn-danger">Sterge comenariul</a>
-                <br />
-                <br />
+                    <br />
+                    <br />
+
+            }
+
+            @if (ViewBag.UserCurent == comentariu.AuthorId)
+            {
+                   
                 <a href="/Comments/Edit/@comentariu.Id" class="btn btn-secondary">Editeaza comentariul</a>
                 <br />
                 <br />
@@ -101,17 +107,19 @@
     }
 
     <div class="m-3">
-    @if (ViewBag.UserCurent == Model.AuthorId || ViewBag.EsteAdmin == true)
-    {
-        <br />
-        <a href="/Topics/Edit/@Model.Id" class="btn btn-secondary">Editeaza Topic-ul</a>
+    @if (ViewBag.UserCurent == Model.AuthorId)
+        {
+            <br />
+            <a href="/Topics/Edit/@Model.Id" class="btn btn-secondary">Editeaza Topic-ul</a>
+        }
 
+        @if (ViewBag.UserCurent == Model.AuthorId || ViewBag.EsteAdmin == true)
+        {
         <br />
         <br />
-
         <a href="/Topics/Delete/@Model.Id" class="btn btn-danger">Sterge Topic-ul</a>
         <br />
-    }
+        }
     </div>
 </div>
 

@@ -1017,3 +1017,4 @@ C:\Users\A\source\repos\LearnIt 1\LearnIt\LearnIt\bin\Debug\net6.0\AngleSharp.dl
 C:\Users\A\source\repos\LearnIt 1\LearnIt\LearnIt\bin\Debug\net6.0\AngleSharp.Css.dll
 C:\Users\A\source\repos\LearnIt 1\LearnIt\LearnIt\bin\Debug\net6.0\HtmlSanitizer.dll
 C:\Users\A\source\repos\LearnIt 1\LearnIt\LearnIt\bin\Debug\net6.0\System.Collections.Immutable.dll
+C:\Users\A\source\repos\LearnIt 1\LearnIt\LearnIt\obj\Debug\net6.0\LearnIt.sourcelink.json

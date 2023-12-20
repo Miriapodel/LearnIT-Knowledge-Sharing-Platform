@@ -1,11 +1,9 @@
-﻿@if (TempData["Message"] != null)
-{
-    <div class="tempdata">@TempData["Message"]</div>
-}
+﻿@model LearnIt.Models.Topic
 
 @if(ViewBag.exTopics == true)
 {
-    <h1>Topics</h1>
+    <h1>Topic-uri din @ViewBag.NumeCategorie</h1>
+    <br />
     <br />
 
     @foreach (var topics in ViewBag.Topics)
@@ -38,7 +36,7 @@
             <ul class="pagination">
                 <li class="page-item">
                     <a class="page-link"
-                       href="/Topics/Index?page=1" aria-label="Previous">
+                       href="/Topics/TopicsDinCategorie/@ViewBag.idCatVechi?page=1" aria-label="Previous">
                         <span aria-hidden="true">&laquo;</span>
                     </a>
                 </li>
@@ -46,12 +44,12 @@
                 {
                     <li class="page-item">
                         <a class="page-link"
-                           href="/Topics/Index?page=@i">@(i)</a>
+                           href="/Topics/TopicsDinCategorie/@ViewBag.idCatVechi?page=@i">@(i)</a>
                     </li>
                 }
                 <li class="page-item">
                     <a class="page-link"
-                       href="/Topics/Index?page=@(ViewBag.lastPage)" aria-
+                       href="/Topics/TopicsDinCategorie/@ViewBag.idCatVechi?page=@(ViewBag.lastPage)" aria-
                        label="Next">
 
                         <span aria-hidden="true">&raquo;</span>
@@ -60,11 +58,10 @@
             </ul>
         </nav>
     </div>
-
 }
 else
 {
-    <h1>Momentan nu exista niciun topic</h1>
+    <h1>Momentan nu exista topic-uri in aceasta categorie</h1>  
     <br />
     <br />
 
@@ -72,10 +69,5 @@ else
     {
         <a href="/Topics/New" class="btn btn-outline-primary">Adauga un topic nou</a>
     }
-
-    <a href="/Categories/Index" class="btn btn-outline-primary">Inapoi la categorii</a>
-    <br />
 }
-
-
 

@@ -27,10 +27,14 @@ namespace LearnIt.Controllers
 
         public IActionResult Index()
         {
-            var cateogies = from category in db.Categories
+            var categories = from category in db.Categories
                             select category;
 
-            ViewBag.Categories = cateogies;
+
+            if (categories.Count() > 0)
+                ViewBag.Categories = categories;
+            else
+                ViewBag.Categories = null;
 
             SetAccessRights();
 
@@ -127,14 +131,17 @@ namespace LearnIt.Controllers
         {
             ViewBag.AfisareButoane = false;
 
-            if ( User.IsInRole("User"))
+
+            if (User.IsInRole("User") || User.IsInRole("Admin"))
             {
-                ViewBag.AfisareButoane = true;
+                ViewBag.ELogat = true;
             }
 
             ViewBag.EsteAdmin = User.IsInRole("Admin");
 
             ViewBag.UserCurent = _userManager.GetUserId(User);
+
+
         }
 
     }
