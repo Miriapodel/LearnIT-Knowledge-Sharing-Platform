@@ -14,4 +14,16 @@ Comentariile pot primi like-uri de la utilizatori, si se poate alege daca se dor
 
 Categoriile pot fi editate, sterse sau adaugate doar de catre admin. Tot adminul este cel care poate sa stearga orice topic si orice comentariu, daca considera ca acestea nu au un continut potrivit.
 
+De asemenea, utilizatorii cu rolul de Admin pot adauga rolul de Admin si altor utilizatori, dar pot si revoca acest rol.
+
 Toate aceste informatii sunt tinute intr-o baza de date Sql Server.
+
+![Poza1](https://github.com/Miriapodel/poze/blob/main/DAW-Proiect/Screenshot%202023-12-20%20182253.png)
+![Poza2]()
+![Poza3]()
+![Poza4]()
+![Poza5]()
+![Poza6]()
+![Poza7]()
+![Poza8]()
+
