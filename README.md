@@ -19,7 +19,7 @@ De asemenea, utilizatorii cu rolul de Admin pot adauga rolul de Admin si altor u
 Toate aceste informatii sunt tinute intr-o baza de date Sql Server.
 
 ![Poza1](https://github.com/Miriapodel/poze/blob/main/DAW-Proiect/Screenshot%202023-12-20%20182253.png)
-![Poza2]()
+![Poza2](https://github.com/Miriapodel/poze/blob/main/DAW-Proiect/Screenshot%202023-12-20%20182555.png)
 ![Poza3]()
 ![Poza4]()
 ![Poza5]()
