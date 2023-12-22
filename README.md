@@ -33,4 +33,3 @@ Toate aceste informatii sunt tinute intr-o baza de date Sql Server.
 ![Poza7](https://github.com/Miriapodel/poze/blob/main/DAW-Proiect/Screenshot%202023-12-20%20183328.png)
 
 ![Poza8](https://github.com/Miriapodel/poze/blob/main/DAW-Proiect/Screenshot%202023-12-20%20183351.png)
-
